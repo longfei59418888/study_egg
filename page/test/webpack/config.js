@@ -1,0 +1,27 @@
+/* eslint-disable */
+/**
+ * webpack
+ * @author Xiaolong
+ */
+const os = require('os');
+
+function getIPAdress() {
+  const interfaces = os.networkInterfaces();
+  for (const devName in interfaces) {
+    const iface = interfaces[devName];
+    for (let i = 0; i < iface.length; i++) {
+      const alias = iface[i];
+      if (alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal) {
+        return alias.address;
+      }
+    }
+  }
+}
+let  DEV_IP = getIPAdress();
+DEV_IP = '127.0.0.1'
+module.exports = {
+  DEV_PORT: 8088,
+  PROD_PORT: 8080,
+  DEV_IP,
+  version: '1.0.0',
+};

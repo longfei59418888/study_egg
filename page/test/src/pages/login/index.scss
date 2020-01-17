@@ -1,0 +1,17 @@
+@import 'variables';
+
+.pages-login-sms-input {
+  &:after {
+    border-top: 1Px solid $blue1
+  }
+}
+.pages-login-tel-input {
+  &:-moz-placeholder {
+    font-family: Roboto-Regular;
+    font-weight: normal;
+  }
+  &::-webkit-input-placeholder {
+    font-family: Roboto-Regular;
+    font-weight: normal;
+  }
+}

@@ -1,0 +1,501 @@
+/**
+ * 基础类
+ * @author Xiaolong
+ */
+
+
+.clear {
+  *zoom: 1;
+}
+
+.clear:before,
+.clear:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+
+.clear:after {
+  clear: both;
+}
+
+.ilbl {
+  display: inline-block;
+}
+
+.bl {
+  display: block;
+}
+
+.pos-r {
+  position: relative;
+}
+
+.pos-a {
+  position: absolute;
+}
+
+.pos-f {
+  position: fixed;
+}
+
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+.t-center {
+  text-align: center;
+}
+
+.t-left {
+  text-align: left;
+}
+
+.t-right {
+  text-align: right;
+}
+
+.t-justify{
+  text-align: justify;
+}
+
+.v-middle{
+  vertical-align:middle;
+}
+.ofh {
+  overflow: hidden;
+}
+
+.ofy {
+  overflow-y: scroll;
+}
+
+.ell {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+// flex 基础类
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-center {
+  @extend .flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-ali-center {
+  @extend .flex;
+  align-items: center;
+}
+
+.flex-jus-between {
+  @extend .flex;
+  justify-content: space-between;
+}
+
+.flex-jus-center {
+  @extend .flex;
+  justify-content: center;
+}
+
+.flex-jus-end {
+  @extend .flex;
+  justify-content: flex-end;
+}
+
+@for $i from 1 through 5 {
+  .flex#{$i} {
+    flex: $i
+  }
+}
+
+// padding + margin 类集合
+$padding: (30, 46, 52, 40, 38, 67, 18, 60, 33, 24, 16, 86, 100, 26, 102, 44, 12, 23, 58, 74, 21, 20, 8, 42, 56, 32,
+36, 70, 34, 48, 10, 88, 14, 42, 50, 84, 110, 64, 40, 150, 22, 25, 28, 16, 43, 37, 47, 256, 62, 78, 82, 98, 72, 212, 6);
+@for $i from 1 through length($padding) {
+  $item: nth($padding, $i);
+  .pt#{$item} {
+    padding-top: #{$item}px
+  }
+  .pl#{$item} {
+    padding-left: #{$item}px
+  }
+  .pb#{$item} {
+    padding-bottom: #{$item}px
+  }
+  .pr#{$item} {
+    padding-right: #{$item}px
+  }
+  .mt#{$item} {
+    margin-top: #{$item}px
+  }
+  .ml#{$item} {
+    margin-left: #{$item}px
+  }
+  .mb#{$item} {
+    margin-bottom: #{$item}px
+  }
+  .mr#{$item} {
+    margin-right: #{$item}px
+  }
+}
+
+// 位置类集合
+$padding2: (0, 52, 50, 17, 24, 40, 46, 25, 22, 120, 35, 30, 42, 48, 12, 10, 21, 172, 11, 20, 44);
+@for $i from 1 through length($padding2) {
+  $item: nth($padding2, $i);
+  .plr#{$item} {
+    padding-right: #{$item}px;
+    padding-left: #{$item}px
+  }
+  .b#{$item} {
+    bottom: #{$item}px;
+  }
+  .t#{$item} {
+    top: #{$item}px;
+  }
+  .l#{$item} {
+    left: #{$item}px;
+  }
+  .r#{$item} {
+    right: #{$item}px;
+  }
+}
+
+// radius 类集合
+$radius: (6, 8, 10, 12, 15, 18, 20, 36, 64);
+@for $i from 1 through length($radius) {
+  $item: nth($radius, $i);
+  .rad#{$item} {
+    border-radius: #{$item}px;
+    overflow: hidden;
+  }
+}
+
+//font-size 类集合
+$fonts: (32, 56, 28, 30, 24, 48, 42, 72, 21, 50, 44, 34, 36, 43, 40, 66, 112, 52, 41, 63, 52, 38, 26, 46);
+@for $i from 1 through length($fonts) {
+  $item: nth($fonts, $i);
+  .font#{$item} {
+    font-size: #{$item}px;
+  }
+}
+
+
+// lineHeight 类集合
+$lineHeight: (33, 42, 66, 32, 45, 40, 85, 38, 52, 22, 100, 28, 88, 46, 47, 35, 36, 61, 56, 53, 44, 74, 54, 38, 72, 90);
+@for $i from 1 through length($lineHeight) {
+  $item: nth($lineHeight, $i);
+  .flh#{$item} {
+    line-height: #{$item}px;
+  }
+  .lh#{$item} {
+    line-height: #{$item}px;
+    height: #{$item}px;
+  }
+}
+
+// fontWeight 类集合
+$fontWeight: ((name:4, value:400), (name:5, value:500), (name:6, value:600), (name:1, value:bold), (name:2, value:bolder), (name:0, value:normal));
+@for $i from 1 through length($fontWeight) {
+  $item: nth($fontWeight, $i);
+  .fw#{map-get($item, name)} {
+    font-weight: map-get($item, value);
+  }
+}
+
+$ellipsisLines: (1, 2, 3, 4);
+@for $i from 1 through length($ellipsisLines) {
+  $item: nth($ellipsisLines, $i);
+  .ell#{$item} {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $item;
+    -webkit-box-orient: vertical;
+  }
+}
+
+
+.nowrap {
+  white-space: nowrap;
+}
+
+$height: (36, 34, 240, 60, 80, 140, 120, 100, 148, 260, 52, 70, 150, 106, 50, 144, 136, 180, 24, 1, 46, 45, 88, 32, 37,
+200, 66, 138, 119, 44, 30, 62, 160, 64, 110, 112, 338, 74, 668, 194, 532, 6, 176, 48, 26, 164, 40, 170, 550);
+@for $i from 1 through length($height) {
+  $item: nth($height, $i);
+  .height#{$item} {
+    height: #{$item}px;
+  }
+}
+
+.height-100 {
+  height: 100%;
+}
+
+.mheight-100 {
+  min-height: 100%;
+}
+
+
+$width: (36, 39, 240, 60, 80, 140, 77, 220, 52, 50, 130, 24, 45, 100, 46, 32, 78, 70, 34, 44, 54, 360, 170,
+180, 110, 318, 598, 112, 48, 18, 26, 164, 404);
+@for $i from 1 through length($width) {
+  $item: nth($width, $i);
+  .width#{$item} {
+    width: #{$item}px;
+  }
+}
+
+.width-100 {
+  width: 100%;
+}
+
+$index: (1, 3, 5, 7, 9, $zIndexTab, $zIndexHeader);
+@for $i from 1 through length($index) {
+  $item: nth($index, $i);
+  .zindex#{$item} {
+    z-index: $item;
+  }
+}
+
+// background
+.bknone {
+  background: none;
+}
+
+// border
+.bornone {
+  border: none;
+}
+
+$borderColor: (#ebebeb, #f0f2f5, #1b1b4e, #F2F3F6, transparent);
+@for $i from 1 through length($borderColor) {
+  $item: nth($borderColor, $i);
+  .bol#{$i} {
+    @include borderLeft(1, $item);
+  }
+  .bor#{$i} {
+    @include borderRight(1, $item);
+  }
+  .bot#{$i} {
+    @include borderTop(1, $item);
+  }
+  .bob#{$i} {
+    @include borderBottom(2, $item);
+  }
+  .borb#{$i} {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      content: " ";
+      display: inline-block;
+      border-top: 1Px solid $item;
+      transform: scale(1, .5);
+      z-index: 2;
+    }
+    @media (-webkit-device-pixel-ratio: 2.625) {
+      &:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        content: " ";
+        display: inline-block;
+        border-top: 1Px solid $item;
+        transform: scale(1, .5);
+        z-index: 2;
+      }
+    }
+  }
+  .borbtop#{$i} {
+    position: relative;
+
+    &:after {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      content: " ";
+      display: inline-block;
+      border-top: 1Px solid $item;
+      transform: scale(1, .5);
+      z-index: 2;
+    }
+    @media (-webkit-device-pixel-ratio: 2.625) {
+      &:after {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        content: " ";
+        display: inline-block;
+        border-top: 2Px solid $item;
+        transform: scale(1, .5);
+        z-index: 2;
+      }
+    }
+  }
+}
+
+.dotb1 {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    content: " ";
+    display: inline-block;
+    border-top: 2Px dashed #ebebeb;
+    transform: scale(1, .5);
+    z-index: 2;
+  }
+}
+
+$fontColor: (#1b1b4e, #84868c, #aeb3c0,
+#FF9900, #404040, #ffffff,
+#4F58FF, #545DFF, #141E34,
+#FF3E4D, #F5F5F5, #9CA3B0,
+#D7E5FB, #1BB855, #F01616,
+#4C6DFA, #394259, #000000,
+#F8F9FD);
+@for $i from 1 through length($fontColor) {
+  $item: nth($fontColor, $i);
+  .fcolor#{$i} {
+    color: $item;
+  }
+  .brad#{$i} {
+    @include borderRadius(8, $item)
+  }
+  .bgcolor#{$i} {
+    background-color: $item;
+  }
+}
+
+.bgC1 {
+  background-image: linear-gradient(180deg, #ffffff, #ffffff 50%, #F5F5F5 50%);
+}
+
+
+// font-family
+.rbold {
+  font-family: Roboto-Bold;
+}
+
+.rmedium {
+  font-family: Roboto-Medium;
+}
+
+.osansme {
+  font-family: Roboto-Medium;
+}
+
+.osansbl {
+  font-family:Open Sans Semibold;
+}
+
+.osans {
+  font-family: Roboto-Regular;
+}
+
+.rreg {
+  font-family: Roboto-Regular;
+}
+
+.rmed {
+  font-family: Roboto-Medium;
+}
+
+
+.sfbold {
+  font-family: Roboto-Bold;
+}
+
+.placeholder1 {
+  &::-webkit-input-placeholder { /* WebKit browsers */
+    color: #aeb3c0;
+    font-size: 32px;
+  }
+}
+
+.placeholder2 {
+  &::-webkit-input-placeholder { /* WebKit browsers */
+    color: #aeb3c0;
+    font-size: 34px;
+    font-weight: 400;
+  }
+}
+
+// 阴影
+.sha1 {
+  box-shadow: 0px 10px 30px 0px rgba(84, 93, 255, 0.3);
+}
+
+.sha2 {
+  box-shadow: 0px 0px 14px 0px rgba(0, 0, 0, 0.1);
+}
+
+.sha3 {
+  box-shadow: 0px -4px 8px 0px rgba(0, 0, 0, 0.03);
+}
+
+.sha4 {
+  box-shadow: 0px 5px 14px 0px rgba(0, 0, 0, 0.05);
+}
+
+.sha5 {
+  box-shadow: 0px 8px 16px 0px rgba(79, 88, 255, 0.4);
+}
+
+.sha6 {
+  box-shadow: 0px 5px 16px 0px rgba(216, 216, 216, 1);
+}
+.nosha{
+  box-shadow: none;
+}
+
+.bglinear1 {
+  background: linear-gradient(131deg, rgba(60, 145, 242, 1) 0%, rgba(84, 93, 255, 1) 100%);
+}
+
+.bglinear2 {
+  background: linear-gradient(180deg, rgba(105, 91, 233, 0) 0%, rgba(245, 245, 245, 1) 100%);
+}
+
+.bglinear3 {
+  background: linear-gradient(180deg,rgba(250, 250, 250, 1)  0%, rgba(255, 255, 255, 1) 6%);
+}
+
+// 动画
+@keyframes jt-com-loading-1 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.ld1 {
+  animation: jt-com-loading-1 1.5s infinite linear;
+}
+

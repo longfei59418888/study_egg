@@ -1,0 +1,9 @@
+/node_modules
+/webpack/build
+/package-lock.json
+.DS_Store
+.idea/
+.vscode/
+/yarn-error.log
+/yarn-lock.log
+#upgrade/config.json

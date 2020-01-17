@@ -1,0 +1,18 @@
+diff a/src/components/modal/confirm/index.js b/src/components/modal/confirm/index.js	(rejected hunks)
+@@ -128,7 +128,14 @@
+ function ContentOne(props) {
+-  const { msg, type } = props;
++  const {
++    msg, type, btnWord,
++  } = props;
++  let { icon } = props;
++  if (icon && icon === true) {
++    icon = require('./images/Re_scan.png');
++  }
+   return (
+     <div className="modal-common-alert-1">
+-      <div className="img"><img src={type} alt="" /></div>
++      {icon && <div className="img"><img src={type} alt="" /></div>}
+       <div className="msg"><p>{msg}</p></div>
++      <div className="btn">{btnWord}</div>
+     </div>

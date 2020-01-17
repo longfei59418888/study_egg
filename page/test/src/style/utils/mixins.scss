@@ -1,0 +1,238 @@
+@mixin border($top:1, $right:1, $bottom:1, $left:1, $color:#ebebf0) {
+  background-image: linear-gradient(180deg, $color, $color 50%, transparent 50%),
+  linear-gradient(90deg, $color, $color 50%, transparent 50%),
+  linear-gradient(0deg, $color, $color 50%, transparent 50%),
+  linear-gradient(90deg, $color, $color 50%, transparent 50%);
+  background-size: 100% $top + PX, $right + PX 100%, 100% $bottom + PX, $left + PX 100%;
+  background-repeat: no-repeat;
+  background-position: top, right top, bottom, left top;
+}
+
+
+@mixin borderTop($top:1, $color:#ebebf0) {
+  @include border($top, 0, 0, 0, $color);
+}
+
+@mixin borderRight($right:1, $color:#ebebf0) {
+  @include border(0, $right, 0, 0, $color);
+}
+
+@mixin borderBottom($bottom:1, $color:#ebebf0) {
+  @include border(0, 0, $bottom, 0, $color);
+}
+
+@mixin borderLeft($left:1, $color:#ebebf0) {
+  @include border(0, 0, 0, $left, $color);
+}
+
+@mixin borderColor($color:#ebebf0) {
+  @include border(1, 1, 1, 1, $color);
+}
+
+@mixin borderRadius($width:1,$style:solid,$color:#ebebf0,$radius:2px,$borderTopWidth:1,$borderLeftWidth:1,$borderRightWidth:1,$borderBottomWidth:1) {
+  position: relative;
+  &:after {
+    left: 0px;
+    top: 0px;
+    right: -100%;
+    bottom: -100%;
+    border-radius: $radius;
+    border-width: $width + px;
+    border-style: $style;
+    border-color: $color;
+    border-top-width: $borderTopWidth;
+    border-bottom-width: $borderBottomWidth;
+    border-left-width: $borderLeftWidth;
+    border-right-width: $borderRightWidth;
+    position: absolute;
+    display: block;
+    -webkit-transform: scale(0.5);
+    -webkit-transform-origin: 0% 0%;
+    content: '';
+  }
+}
+
+@mixin images($url:'images/check.png',$repeat:no-repeat,$size:auto) {
+  background-image: url($url);
+  background-repeat: $repeat;
+  -webkit-background-size: $size;
+  background-size: $size;
+}
+
+
+@mixin borderRadius($size,$color){
+  position: relative;
+  line-height: normal;
+  &:before {
+    content: "";
+    box-sizing: border-box;
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    left: 0;
+    top: 0;
+    border-radius: $size*2px;
+    border: 1Px solid $color;
+    -webkit-transform: scale(0.5);
+    -webkit-transform-origin: 0 0;
+    transform: scale(0.5);
+    transform-origin: 0 0;
+  }
+  @media (-webkit-device-pixel-ratio: 2) {
+    &::before {
+      border: 2Px solid $color;
+    }
+  }
+  @media (-webkit-device-pixel-ratio: 2.625) {
+    &::before {
+      border: 2Px solid $color;
+    }
+  }
+}
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+//文本溢出隐藏
+@mixin text-ellipsis () {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+//正三角的通用属性
+%triangleBase {
+  _font-size: 0;
+  _line-height: 0;
+  _overflow: hidden;
+  width: 0;
+  height: 0;
+}
+
+// regulaTriangle:正三角(dashed默认透明)
+// 例子：@include regulaTriangle(top,red);
+@mixin regulaTriangle($derection:bottom, $color: #000, $width: 20px) {
+  @extend %triangleBase;
+  border-width: $width;
+  //向右
+  @if $derection==right {
+    border-style: dashed dashed dashed solid;
+    border-color: transparent transparent transparent $color;
+  }
+  //向左
+  @if $derection==left {
+    border-style: dashed solid dashed dashed;
+    border-color: transparent $color transparent transparent;
+  }
+  //向上
+  @if $derection==top {
+    border-style: dashed dashed solid dashed;
+    border-color: transparent transparent $color transparent;
+  }
+  //向下
+  @if $derection==bottom {
+    border-style: solid dashed dashed dashed;
+    border-color: $color transparent transparent transparent;
+  }
+}
+
+//直角三角形
+@mixin right-angledTriangle ($derection:1, $color:#000, $width: 20px, $opacity:transparent, $border:dashed) {
+  @extend %triangleBase;
+  border-width: $width;
+  //向右
+  @if $derection==1 {
+    border-style: $border dashed dashed $border;
+    border-color: $color $opacity $opacity $color;
+  }
+  //向右
+  @if $derection==2 {
+    border-style: $border $border dashed dashed;
+    border-color: $color $color $opacity $opacity;
+  }
+  //向右
+  @if $derection==3 {
+    border-style: dashed $border $border dashed;
+    border-color: $opacity $color $color $opacity;
+  }
+  //向右
+  @if $derection==4 {
+    border-style: dashed dashed $border $border;
+    border-color: $opacity $opacity $color $color;
+  }
+}
+
+//-----------------------------------圆角-----------------------------------------
+//radius:圆角
+//例子：@include radius(24,100%);
+@mixin radius($num:1234, $size: 5px) {
+  @if $num==1234 {
+    -webkit-border-radius: $size; //Saf3+, Chrome
+    -moz-border-radius: $size; //FF1+
+    border-radius: $size; //Opera 10.5, IE 9
+    -ms-border-radius: $size;
+  }
+  @if $num==12 {
+    -webkit-border-top-left-radius: $size;
+    border-top-left-radius: $size;
+    -webkit-border-top-right-radius: $size;
+    border-top-right-radius: $size;
+    -moz-border-top-left-radius: $size;
+    -ms-border-top-left-radius: $size;
+    -moz-border-top-right-radius: $size;
+    -ms-border-top-right-radius: $size;
+  }
+  @if $num==23 {
+    -webkit-border-top-right-radius: $size;
+    border-top-right-radius: $size;
+    -webkit-border-bottom-right-radius: $size;
+    border-bottom-right-radius: $size;
+    -moz-border-top-right-radius: $size;
+    -moz-border-bottom-right-radius: $size;
+    -ms-border-top-right-radius: $size;
+    -ms-border-bottom-right-radius: $size;
+  }
+  @if $num==34 {
+    -webkit-border-bottom-right-radius: $size;
+    border-bottom-right-radius: $size;
+    -webkit-border-bottom-left-radius: $size;
+    border-bottom-left-radius: $size;
+    -moz-border-bottom-left-radius: $size;
+    -moz-border-bottom-right-radius: $size;
+    -ms-border-bottom-left-radius: $size;
+    -ms-border-bottom-right-radius: $size;
+  }
+  @if $num==14 {
+    -webkit-border-top-left-radius: $size;
+    border-top-left-radius: $size;
+    -webkit-border-bottom-left-radius: $size;
+    border-bottom-left-radius: $size;
+    -moz-border-top-left-radius: $size;
+    -moz-border-bottom-left-radius: $size;
+    -ms-border-top-left-radius: $size;
+    -ms-border-bottom-left-radius: $size;
+  }
+  @if $num==13 {
+    -webkit-border-top-left-radius: $size;
+    -webkit-border-bottom-right-radius: $size;
+    -ms-border-top-left-radius: $size;
+    -ms-border-bottom-right-radius: $size;
+    border-top-left-radiu: $size;
+    -moz-border-top-left-radius: $size;
+    border-bottom-right-radiu: $size;
+    -moz-border-bottom-right-radius: $size;
+  }
+  @if $num==24 {
+    -webkit-border-top-right-radius: $size;
+    border-top-right-radius: $size;
+    -webkit-border-bottom-left-radius: $size;
+    border-bottom-left-radius: $size;
+    -moz-border-top-right-radius: $size;
+    -moz-border-bottom-left-radius: $size;
+    -ms-border-top-right-radius: $size;
+    -ms-border-bottom-left-radius: $size;
+  }
+}

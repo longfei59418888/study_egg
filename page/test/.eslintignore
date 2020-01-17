@@ -1,0 +1,6 @@
+coverage
+dist
+/src/components/iscroll
+output
+upgrade
+gulpfile.js

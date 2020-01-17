@@ -1,0 +1,18 @@
+@import "variables";
+
+.jt--com-swiper {
+  .swiper-pagination-bullet {
+    height: 4Px;
+    width: 4Px;
+    border-radius: 0;
+    opacity: 1;
+    background-color: rgba(255, 255, 255, .5);
+    margin: 0 .08rem !important;
+  }
+  .swiper-container-horizontal>.swiper-pagination-bullets{
+    bottom: 18px;
+  }
+  .swiper-pagination-bullet-active {
+    width: 8Px;
+  }
+}

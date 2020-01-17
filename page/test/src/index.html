@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" >
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no,minimal-ui">
+    <meta name="format-detection" content="telephone=no, email=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="x5-fullscreen" content="true">
+    <title>360LOAN_IN</title>
+    <script>
+      setFont();
+      window.addEventListener('resize', function () {
+        setFont();
+      });
+
+      function setFont() {
+        (window.__setFontSize__ = function () {
+          document.documentElement.style.fontSize =
+            Math.min(750, Math.max(document.documentElement.clientWidth, 320)) / 7.5 + 'px';
+        })();
+      }
+
+    </script>
+    <!-- vconsole -->
+
+    <% if(htmlWebpackPlugin.options.debug){ %>
+    <script src="http://cdn.bootcss.com/vConsole/2.5.0/vconsole.min.js"></script>
+<!--    <script src="https://s.ssl.qhres.com/static/4365f50af6c6b95f.js"></script>-->
+<!--    <script type="text/javascript">-->
+<!--      var vConsole = new VConsole();-->
+<!--      console.log({-->
+<!--        appVersion: window.navigator.appVersion,-->
+<!--        userAgent: window.navigator.userAgent,-->
+<!--      });-->
+<!--    </script>-->
+    <% } %>
+</head>
+<body>
+<div id="mask" style="position: fixed;left: 0;top: 0;width: 100%;height: 100%;z-index: 9999999;display: none"></div>
+<div id="app"></div>
+</body>
+</html>

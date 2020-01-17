@@ -1,0 +1,6 @@
+
+
+init:{'{x,y}'},传入初始位置。
+leaveBefor: {'(Scroller[当前Scroller组件]'}，离开页面或者注销当前Scroller组件，设置当期滚动的位置
+onRefresh: {'(Scroller,bak[刷新完成函数,true为结束])'},下拉刷新
+onLoadMore: {'(Scroller,bak[当前加载完成函数,true为结束])'},上拉加载

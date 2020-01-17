@@ -1,0 +1,9 @@
+0、yarn install
+1、gulp 命令不需要
+2、渠道对应的 密钥
+3、将所有文件对md5加密(这里的 map 文件也需要加密) 存放到upgrade/manifest.zip --加密--> manifest1.zip
+4、对比上次提交的不同，文件名称存放到 filelist.txt
+
+
+文案：
+1:not eligible for our loan now 二次授信拒绝

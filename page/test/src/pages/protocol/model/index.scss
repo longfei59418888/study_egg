@@ -1,0 +1,51 @@
+@import "mixins";
+
+.agreement-content{
+  section{
+    padding: 0.2rem 0.24rem;
+    font-size: 0.28rem;
+    text-align: justify;
+  }
+  h1{
+    padding: 0.4rem 0;
+    font-weight: bold;
+    text-align: center;
+    font-size: 0.32rem;
+  }
+  h2{
+    margin-bottom: 0.1rem;
+    font-size: 0.3rem;
+    font-weight: bold;
+  }
+  h3{
+    font-size: 0.3rem;
+    font-weight: 600;
+  }
+  ul{
+    padding-bottom: 0.4rem;
+  }
+  p{
+    padding-bottom: 0.4rem;
+    line-height: 0.5rem;
+  }
+  table{
+    width: 100%;
+    margin: 0.3rem 0;
+    text-align: center;
+    @include border(1, 1, 1, 1, #ebebeb);
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 0;
+  }
+  table td, table th{
+    padding: 0.2rem 0.1rem;
+    word-break: normal;
+    @include border(1, 1, 1, 1, #ebebeb);
+    border-collapse : collapse;
+    font-size:  16px;
+  }
+  .center{
+    margin-top: 0.6rem;
+    text-align: center;
+  }
+}
